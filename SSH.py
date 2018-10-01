@@ -6,7 +6,7 @@ import optparse
 
 def nmapScan(tgtHost, tgtPort):
     nmScan = nmap.PortScanner()
-    nmScan.scan(tgtHost.tgtPort)
+    nmScan.scan(tgtHost,tgtPort)
     state = nmScan[tgtHost]['tcp'][int(tgtPort)]['state']
     print '[*] '+tgtHost+' tcp/'+tgtPort +" "+state
 
@@ -16,7 +16,7 @@ def main():
     parser.add_option('-p', dest='tgtPort', type='string', help = 'specify target port[s] spearated by comma')
     (options, args) = parser.parse_args()
     tgtHost = options.tgtHost
-    tgtPorts = str(options.tgtPort).split(', ')
+    tgtPorts = str(options.tgtPort).split(',')
     if (tgtHost == None) | (tgtPorts[0]==None):
         print parser.usage
         exit(0)
