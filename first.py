@@ -1,5 +1,6 @@
-import socket, select
 import re
+import select
+import socket
 
 server = socket.socket()
 Addr = ("", 2050)
